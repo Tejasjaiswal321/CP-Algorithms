@@ -1,0 +1,106 @@
+/*
+    Problem: Next Pointer Binary Tree
+    Platform: InterviewBit
+    Link: https://www.interviewbit.com/problems/next-pointer-binary-tree/
+
+    Time Complexity:  O(n)
+    Space Complexity: O(1)
+
+    Author: Tejas Jaiswal
+    Given a binary tree
+
+        struct TreeLinkNode {
+        TreeLinkNode *left;
+        TreeLinkNode *right;
+        TreeLinkNode *next;
+        }
+    Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+    Initially, all next pointers are set to NULL.
+
+    Note:
+
+    You may only use constant extra space.
+    You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).
+    Example :
+
+    Given the following perfect binary tree,
+
+            1
+        /  \
+        2    5
+        / \  / \
+        3  4  6  7
+    After calling your function, the tree should look like:
+
+            1 -> NULL
+        /  \
+        2 -> 5 -> NULL
+        / \  / \
+        3->4->6->7 -> NULL
+    Note that using recursion has memory overhead and does not qualify for constant space.
+*/
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+//Common Helper functions
+void manageInputOutput(){
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt","r",stdin);
+        freopen("output.txt","w",stdout);
+    #endif
+}
+
+template<class T>
+void print_vector(vector<T> arr,string name = ""){
+    cout<<"print_vector : "<<name<<": ";
+    for(auto &i:arr){
+        cout<< i <<" ";
+    }
+    cout<<endl;
+}
+template<class T>
+void print_vector(set<T>st){
+    cout<<"print_set : "<<": ";
+    for(auto &i:st){
+        cout<< i <<" ";
+    }
+     cout<<endl;
+}
+
+struct TreeLinkNode {
+    int val;
+    TreeLinkNode *left,*right,*next;
+    TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
+};
+
+
+class Solution{
+    public:
+        void connect(TreeLinkNode* A);
+};
+
+void Solution::connect(TreeLinkNode* A) {
+    auto node = A;
+    while(node!=NULL){
+        TreeLinkNode * startNode,*leftNode = node,*prevNodeRChild= NULL;
+        while(leftNode!=NULL){
+            printf("%d -> %d\n",leftNode->left->val,leftNode->right->val);
+            leftNode->left->next = leftNode->right;
+            if(prevNodeRChild!=NULL){
+                prevNodeRChild->next = leftNode->left;
+                printf("rchild: %d -> %d\n",prevNodeRChild->next->val,leftNode->left->val);
+            }
+            prevNodeRChild = leftNode->right;
+            leftNode = leftNode->next;
+        }
+
+        node = startNode->left;
+    }
+}
+
+int main(){
+    manageInputOutput();
+
+}

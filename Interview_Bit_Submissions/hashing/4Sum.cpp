@@ -74,7 +74,7 @@ vector<int> parseStr(string s){
     return ans;
 }
 
-vector<vector<int> > fourSum1(vector<int> &A, int target) {//doesn't work
+vector<vector<int> > fourSumDeprecated(vector<int> &A, int target) {//doesn't work gives TLE for  {-100, -100, -100, -100, -100 }; & target = -10
     sort(A.begin(),A.end());
     unordered_map<int,vector<vector<int>>> ones,twos,threes;
     unordered_set<string> ans;

@@ -2,6 +2,8 @@
     Problem: Max Rectangle in Binary Matrix
     Platform: Interview Bit
     Link: https://www.interviewbit.com/problems/max-rectangle-in-binary-matrix/
+    Time Complexity: O(n^2)
+    Space Complexity: O(n^2)
     Problem Description:
     Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing all ones and return its area.
 
